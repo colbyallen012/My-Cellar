@@ -29,4 +29,12 @@ describe('API', () => {
       expect(wine.name).toEqual(newVino.name)
     })
   })
+
+  describe('DELETE /api/v1/projects/:id', () => {
+    it('HAPPY PATH: should return a status of 204 when a projects is deleted', async () => {
+      const expectedId = await database('vinos').first('id').then(object => object.id);
+      const response = await request(app).delete(`/api/v1/vinos/${expectedId}`)
+      expect(response.status).toBe(204)
+    })
+  })
 })
