@@ -21,18 +21,12 @@ describe('API', () => {
 
   describe('POST /api/v1/vinos', () => {
     it('HAPPY PATH should return 201 status and new object with id', async () => {
-
       const newVino = {name: 'mines vineyard', vineyard: 'ours', color: 'red', type: 'merlot', year: 2011, rating: 5}
       const response = await request(app).post('/api/v1/vinos').send(newVino)
-
       const wines = await database('vinos').where('id', response.body.id).select()
       const wine = wines[0]
-
       expect(response.status).toBe(201)
       expect(wine.name).toEqual(newVino.name)
-
-      // expect(response.status).toBe(201)
-      // expect(response.body).toEqual(expectedResponse)
     })
   })
 })
