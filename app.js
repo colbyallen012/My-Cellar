@@ -28,7 +28,7 @@ app.post('/api/v1/vinos', (request, response) => {
   }
   database('vinos').insert(wines, 'id')
     .then(wines => {
-      response.status(201).json({ id: wines[0].id })
+      response.status(201).json({ id: wines[0] })
     })
     .catch(error => {
       response.status(500).json({ error });
