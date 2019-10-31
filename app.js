@@ -19,23 +19,20 @@ app.get('/api/v1/vinos', (request, response) => {
 
 app.post('/api/v1/vinos', (request, response) => {
   const wines = request.body;
-  for(let requiredParameter of ['name', 'color', 'type', 'year', 'rating']) {
+  for(let requiredParameter of ['vineyard', 'name', 'color', 'type', 'year', 'rating']) {
     if(!wines[requiredParameter]) {
       return response
         .status(422)
-        .send({error: `Expected format: {name: <String>, color: <String>, type: <String>, year: <Integer>, rating: <Integer>}. You're missing the ${requiredParameter} property.`})
+        .send({error: `Expected format: { vineyard: <String>, name: <String>, color: <String>, type: <String>, year: <Integer>, rating: <Integer>}. You're missing the ${requiredParameter} property.`})
     }
   }
-  database('wines').where('name', wines.name).select()
-    .then(existingWines => {
-      if(!existingWines.length) {
-        database('wines').insert(wines, 'id')
-          .then(wines => response.status(201).json({id: wines[0]}))
-          .catch(error => response.status(500).json({error}))
-      } else {
-        response.status(409).json(`${wines.name} already exists.`)
-      }
+  database('vinos').insert(wines, 'id')
+    .then(wines => {
+      response.status(201).json({ id: wines[0].id })
     })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
 });
 
 module.exports = app;
