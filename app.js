@@ -35,4 +35,18 @@ app.post('/api/v1/vinos', (request, response) => {
     });
 });
 
+app.delete('/api/v1/vinos/:id', (request, response) => {
+  const {id} = request.params;
+  database('vinos').where('id', id).select()
+    .then(wines => {
+      if(wines.length) {
+            database('vinos').where('id', id).del()
+              .then(() => response.status(204).json('Wine deleted'))
+              .catch(error => response.status(500).json({error}))
+      } else {
+        response.status(404).json('Wine does not exist')
+      }
+    })
+})
+
 module.exports = app;
