@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/docket',
+    connection: 'postgres://localhost/wines',
     migrations: {
       directory: './db/migrations'
     },
@@ -13,7 +13,7 @@ module.exports = {
     },
     useNullAsDefault: true
   },
-  
+
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL + `?ssl=true`,
@@ -28,7 +28,7 @@ module.exports = {
 
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/docket_test',
+    connection: 'postgres://localhost/wines_test',
     migrations: {
       directory: './db/migrations'
     },
