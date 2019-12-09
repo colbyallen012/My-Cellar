@@ -12,11 +12,13 @@ app.use(express.static('public'));
 app.locals.title = 'My Cellar';
 
 app.get('/', (request, response) => {
+  console.log(request)
+  console.log(response)
 });
 
 app.get('/api/v1/vinos', (request, response) => {
   database('vinos').select()
-    .then(wine => response.status(200).json(wine))
+    .then(vinos => response.status(200).json(vinos))
     .catch(error => response.status(500).json({error}))
 });
 
