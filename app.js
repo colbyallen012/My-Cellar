@@ -12,8 +12,6 @@ app.use(express.static('public'));
 app.locals.title = 'My Cellar';
 
 app.get('/', (request, response) => {
-  console.log(request)
-  console.log(response)
 });
 
 app.get('/api/v1/vinos', (request, response) => {
