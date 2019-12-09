@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+}
+
+.endpoints {
+  border-collapse: collapse;
+  margin: auto;
+  width: 90%;
+}
+
+.endpoints, td, th {
+  border: 2px solid black;
+}
+
+td {
+  padding: 10px;
+}
