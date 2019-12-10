@@ -11,9 +11,9 @@ app.use(express.json());
 app.use(express.static('public'));
 app.locals.title = 'My Cellar';
 
-app.get('/', (_request, _response) => {
+app.get('/', (request, response) => {
+  response.send('We\'re gonna do it!');
 });
-
 
 // app.get('/api/v1/vinos', (request, response) => {
 //   database('vinos').select()
