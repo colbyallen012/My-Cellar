@@ -8,11 +8,11 @@ const querystring = require('querystring');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('Public'));
 app.locals.title = 'My Cellar';
 
 app.get('/', (request, response) => {
-  response.send('We\'re gonna do it!');
+  // response.send('We\'re gonna do it!');
 });
 
 // app.get('/api/v1/vinos', (request, response) => {

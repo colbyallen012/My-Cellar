@@ -6,4 +6,4 @@ app.listen(app.get('port'), () => {
   console.log(`Running on port ${app.get('port')}`)
 });
 
-// module.exports = app;
+module.exports = app;
